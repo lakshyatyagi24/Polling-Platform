@@ -2,8 +2,12 @@ const Mongodb = require('mongodb')
 
 const uri = 'mongodb://localhost/polling-platform'
 
-module.exports = (app) => {
-    const client = new Mongodb.MongoClient(uri)
+module.exports = async () => {
+    const client = new Mongodb.MongoClient(uri, {
+        useUnifiedTopology: true
+    })
 
-    return client.connect()
+    await client.connect()
+    
+    return client.db()
 }

@@ -1,7 +1,7 @@
 const { v4 } = require("uuid")
 
-module.exports = (client) => {
-    return (request, response) => {
+module.exports = (db) => {
+    return async (request, response) => {
         const data = {
             _id: v4(),
             title: request.body.title,
@@ -11,6 +11,11 @@ module.exports = (client) => {
                 _id: v4()
             }))
         }
-        return response.json(data)
+
+        await db.collection('polls').insertOne(data)
+        return response.json({
+            message: 'Poll Created',
+            pollId: data._id
+        })
     }
 }
