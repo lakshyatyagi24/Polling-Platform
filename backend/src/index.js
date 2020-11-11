@@ -1,5 +1,5 @@
 const Express = require('express')
-const setupRadis = require('redis')
+const setupRadis = require('./setup/redis')
 const setupRouter = require('./setup/router')
 const setupMiddleware = require('./setup/middleware')
 const setupDatabase = require('./setup/database')

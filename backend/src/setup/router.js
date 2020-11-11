@@ -11,7 +11,7 @@ module.exports = (app, db, redisDb) => {
 
     router.post('/polls', createPollsValidator, createPolls(db))
 
-    router.put('/polls/:poll', createVotesValidator, createVotes(db)) 
+    router.put('/polls/:poll', createVotesValidator, createVotes(db, redisDb)) 
     router.get('/polls/:poll', getPoll(db)) 
 
     app.use(router)    
