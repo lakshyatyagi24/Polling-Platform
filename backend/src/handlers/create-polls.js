@@ -15,7 +15,8 @@ module.exports = (db) => {
         await db.collection('polls').insertOne(data)
         return response.json({
             message: 'Poll Created',
-            pollId: data._id
+            pollId: data._id,
+            data
         })
     }
 }
