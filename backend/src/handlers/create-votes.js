@@ -2,8 +2,12 @@ const { promisify } = require('util')
 
 module.exports = (db, redisDb) => {
     const saddAsync = promisify(redisDb.sadd).bind(redisDb)
+    const smembersAsync = promisify(redisDb.smembers).bind(redisDb)
 
     return async (request, response) => {
+        console.log(
+            await smembersAsync(request.params.poll)
+        )
         const result = await db.collection('polls').updateOne({
             _id: request.params.poll,
             'choices._id': request.body.choice
