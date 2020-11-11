@@ -3,7 +3,7 @@ const createPolls = require('../handlers/create-polls')
 
 const createPollsValidator = require('../validators/create-polls')
 
-module.exports = (app, db) => {
+module.exports = (app, db, redisDb) => {
     const router = new Router()
 
     router.post('/polls', createPollsValidator, createPolls(db))

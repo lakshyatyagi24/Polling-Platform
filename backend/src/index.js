@@ -1,4 +1,5 @@
 const Express = require('express')
+const setupRadis = require('redis')
 const setupRouter = require('./setup/router')
 const setupMiddleware = require('./setup/middleware')
 const setupDatabase = require('./setup/database')
@@ -9,7 +10,9 @@ setupMiddleware(app)
 
 async function start() {
     const db = await setupDatabase()
-    setupRouter(app, db)
+    const redisDb = await setupRadis()
+
+    setupRouter(app, db, redisDb)
     //console.log(client)
     app.listen(4000, () => {
         console.log('Server started on port 4000')
