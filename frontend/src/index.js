@@ -1,9 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import * as serviceWorker from './serviceWorker';
-import { BrowserRouter, Link, Switch, Route } from 'react-router-dom';
-import Home from './pages/Home';
+import { BrowserRouter, Link, Route, Switch } from 'react-router-dom';
 import CreatePoll from './pages/CreatePoll';
+import Home from './pages/Home';
+import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(
   <React.StrictMode>
