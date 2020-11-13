@@ -17,7 +17,7 @@ async function start() {
     //console.log(client)
     app.listen(Config.port, () => {
         console.log('Server started on port ', Config.port)
-}) 
+    }) 
 }
 
 start().catch(console.error)
